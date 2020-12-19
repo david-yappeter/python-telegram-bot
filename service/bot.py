@@ -1,5 +1,5 @@
 import requests
-import configparser as cfg
+import os
 import json
 
 class TelegramBot:
@@ -21,6 +21,4 @@ class TelegramBot:
             requests.get(url)
 
     def GetBotToken(self):
-        parser = cfg.ConfigParser()
-        parser.read("config.cfg")
-        return parser.get("creds", "token")
+        return os.environ.get('BOT_TOKEN', None)
